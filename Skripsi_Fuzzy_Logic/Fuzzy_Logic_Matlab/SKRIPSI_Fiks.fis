@@ -1,0 +1,111 @@
+[System]
+Name='SKRIPSI_Fiks'
+Type='mamdani'
+Version=2.0
+NumInputs=5
+NumOutputs=3
+NumRules=33
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='pH'
+Range=[4 11]
+NumMFs=3
+MF1='AC':'trapmf',[0 0 6 7]
+MF2='NT':'trapmf',[6.5 7.5 7.5 8.5]
+MF3='AL':'trapmf',[8 9 14 14]
+
+[Input2]
+Name='Suhu'
+Range=[20 35]
+NumMFs=3
+MF1='CD':'trapmf',[0 0 23.5 25.5]
+MF2='NM':'trimf',[25 27.5 30]
+MF3='HO':'trapmf',[29 31 35 35]
+
+[Input3]
+Name='Turbidity'
+Range=[0 100]
+NumMFs=3
+MF1='LT':'trapmf',[0 0 10 15]
+MF2='MT':'trapmf',[10 15 21 26]
+MF3='HT':'trapmf',[25 30 100 100]
+
+[Input4]
+Name='Saturation'
+Range=[0 100]
+NumMFs=3
+MF1='LS':'trapmf',[0 0 10 20]
+MF2='MS':'trapmf',[10 20 45 55]
+MF3='HS':'trapmf',[42 55 100 100]
+
+[Input5]
+Name='Error_Do'
+Range=[0 100]
+NumMFs=4
+MF1='MD':'trapmf',[40 70 70 100]
+MF2='LD':'trapmf',[0 30 30 60]
+MF3='ZD':'trapmf',[0 0 0 25]
+MF4='HD':'trapmf',[75 100 100 100]
+
+[Output1]
+Name='Valve'
+Range=[0 1]
+NumMFs=2
+MF1='OFF_V':'trapmf',[0 0 0.4 0.6]
+MF2='ON_V':'trapmf',[0.4 0.6 1 1]
+
+[Output2]
+Name='Aerator'
+Range=[0 3]
+NumMFs=4
+MF1='DO_T':'trimf',[0 0 1]
+MF2='DO_S':'trimf',[1 2 3]
+MF3='DO_C':'trimf',[0 1 2]
+MF4='DO_B':'trimf',[2 3 3]
+
+[Output3]
+Name='Heater'
+Range=[0 1]
+NumMFs=2
+MF1='OFF_H':'trapmf',[0 0 0.4 0.6]
+MF2='ON_H':'trapmf',[0.4 0.6 1 1]
+
+[Rules]
+1 1 1 0 0, 2 0 2 (1) : 1
+1 1 2 0 0, 2 0 2 (1) : 1
+1 1 3 0 0, 2 0 2 (1) : 1
+1 2 1 0 0, 2 0 1 (1) : 1
+1 2 2 0 0, 2 0 1 (1) : 1
+1 2 3 0 0, 2 0 1 (1) : 1
+2 1 1 0 0, 1 0 2 (1) : 1
+2 1 2 0 0, 1 0 2 (1) : 1
+2 1 3 0 0, 2 0 2 (1) : 1
+2 2 1 0 0, 1 0 1 (1) : 1
+2 2 2 0 0, 1 0 1 (1) : 1
+2 2 3 0 0, 2 0 1 (1) : 1
+2 3 1 0 0, 1 0 1 (1) : 1
+2 3 2 0 0, 1 0 1 (1) : 1
+2 3 3 0 0, 2 0 1 (1) : 1
+3 1 1 0 0, 2 0 2 (1) : 1
+3 1 2 0 0, 2 0 2 (1) : 1
+3 1 3 0 0, 2 0 2 (1) : 1
+3 2 1 0 0, 2 0 1 (1) : 1
+3 2 2 0 0, 2 0 1 (1) : 1
+3 2 3 0 0, 2 0 1 (1) : 1
+0 0 0 1 3, 2 2 0 (1) : 1
+0 0 0 1 2, 2 2 0 (1) : 1
+0 0 0 1 1, 2 3 0 (1) : 1
+0 0 0 1 4, 2 4 0 (1) : 1
+0 0 0 3 3, 2 2 0 (1) : 1
+0 0 0 3 2, 2 2 0 (1) : 1
+0 0 0 3 1, 2 3 0 (1) : 1
+0 0 0 3 4, 2 4 0 (1) : 1
+0 0 0 2 3, 2 2 0 (1) : 1
+0 0 0 2 2, 2 2 0 (1) : 1
+0 0 0 2 1, 2 3 0 (1) : 1
+0 0 0 2 4, 2 4 0 (1) : 1
